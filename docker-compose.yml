@@ -13,7 +13,7 @@ services:
       - my_network
     volumes:
       - ./fastapi_backend:/app
-      - fastapi-venv:/app/.venv
+      - ./.venv:/app/.venv
       - ./local-shared-data:/app/shared-data
     depends_on:
       - db

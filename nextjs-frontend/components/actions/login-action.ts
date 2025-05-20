@@ -33,7 +33,8 @@ export async function login(prevState: unknown, formData: FormData) {
     if (error) {
       return { server_validation_error: getErrorMessage(error) };
     }
-    (await cookies()).set("accessToken", data.access_token);
+    const cookieStore = await cookies();
+    cookieStore.set("accessToken", data.access_token);
   } catch (err) {
     console.error("Login error:", err);
     return {

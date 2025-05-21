@@ -61,33 +61,33 @@ Introducing the Next.js FastAPI Template: A cutting-edge foundation for modern f
 * [Commercial Support](#commercial-support)
 
 ## About
-This template streamlines building APIs with [FastAPI](https://fastapi.tiangolo.com/) and dynamic frontends with [Next.js](https://nextjs.org/). It integrates the backend and frontend using [@hey-api/openapi-ts](https://github.com/hey-api/openapi-ts) to generate a type-safe client, with automated watchers to keep the OpenAPI schema and client updated, ensuring a smooth and synchronized development workflow.  
+This template streamlines building APIs with [FastAPI](https://fastapi.tiangolo.com/) and dynamic frontends with [Next.js](https://nextjs.org/). It integrates the backend and frontend using [@hey-api/openapi-ts](https://github.com/hey-api/openapi-ts) to generate a type-safe client, with automated watchers to keep the OpenAPI schema and client updated, ensuring a smooth and synchronized development workflow.
 
-- [Next.js](https://nextjs.org/): Fast, SEO-friendly frontend framework  
-- [FastAPI](https://fastapi.tiangolo.com/): High-performance Python backend  
+- [Next.js](https://nextjs.org/): Fast, SEO-friendly frontend framework
+- [FastAPI](https://fastapi.tiangolo.com/): High-performance Python backend
 - [SQLAlchemy](https://www.sqlalchemy.org/): Powerful Python SQL toolkit and ORM
 - [PostgreSQL](https://www.postgresql.org/): Advanced open-source relational database
 - [Pydantic](https://docs.pydantic.dev/): Data validation and settings management using Python type annotations
-- [Zod](https://zod.dev/) + [TypeScript](https://www.typescriptlang.org/): End-to-end type safety and schema validation  
+- [Zod](https://zod.dev/) + [TypeScript](https://www.typescriptlang.org/): End-to-end type safety and schema validation
 - [fastapi-users](https://fastapi-users.github.io/fastapi-users/): Complete authentication system with:
   - Secure password hashing by default
   - JWT (JSON Web Token) authentication
   - Email-based password recovery
 - [Shadcn/ui](https://ui.shadcn.com/): Beautiful and customizable React components
-- [OpenAPI-fetch](https://github.com/Hey-AI/openapi-fetch): Fully typed client generation from OpenAPI schema  
+- [OpenAPI-fetch](https://github.com/Hey-AI/openapi-fetch): Fully typed client generation from OpenAPI schema
 - [fastapi-mail](https://sabuhish.github.io/fastapi-mail/): Efficient email handling for FastAPI applications
 - [uv](https://docs.astral.sh/uv/): An extremely fast Python package and project manager
 - [Pytest](https://docs.pytest.org/): Powerful Python testing framework
 - Code Quality Tools:
   - [Ruff](https://github.com/astral-sh/ruff): Fast Python linter
   - [ESLint](https://eslint.org/): JavaScript/TypeScript code quality
-- Hot reload watchers:  
-  - Backend: [Watchdog](https://github.com/gorakhargosh/watchdog) for monitoring file changes  
-  - Frontend: [Chokidar](https://github.com/paulmillr/chokidar) for live updates  
+- Hot reload watchers:
+  - Backend: [Watchdog](https://github.com/gorakhargosh/watchdog) for monitoring file changes
+  - Frontend: [Chokidar](https://github.com/paulmillr/chokidar) for live updates
 - [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/): Consistent environments for development and production
 - [MailHog](https://github.com/mailhog/MailHog): Email server for development
-- [Pre-commit hooks](https://pre-commit.com/): Enforce code quality with automated checks  
-- [OpenAPI JSON schema](https://swagger.io/specification/): Centralized API documentation and client generation  
+- [Pre-commit hooks](https://pre-commit.com/): Enforce code quality with automated checks
+- [OpenAPI JSON schema](https://swagger.io/specification/): Centralized API documentation and client generation
 
 With this setup, you'll save time and maintain a seamless connection between your backend and frontend, boosting productivity and reliability.
 
@@ -148,9 +148,9 @@ Copy the `.env.example` files to `.env` and update the variables with your own v
 5. You can check the .env.example file for more information about the variables.
 
 **Frontend (`nextjs-frontend/.env.local`):**
-Copy the `.env.example` files to `.env`. These values are unlikely to change, so you can leave them as they are.
+Copy the `.env.example` files to `.env.local`. These values are unlikely to change, so you can leave them as they are.
    ```bash
-   cd nextjs-frontend && cp .env.example .env
+   cd nextjs-frontend && cp .env.example .env.local
    ```
 
 ### Running the Database
@@ -339,24 +339,24 @@ VERIFICATION_SECRET_KEY: The secret key for email or user verification.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvintasoftware%2Fnextjs-fastapi-template%2Ftree%2Fmain%2Fnextjs-frontend&env=API_BASE_URL&envDescription=The%20API_BASE_URL%20is%20the%20backend%20URL%20where%20the%20frontend%20sends%20requests.)
 
-1. **Deploying the Frontend**  
-   - Click the **Frontend** button above to start the deployment process.  
-   - During deployment, you will be prompted to set the `API_BASE_URL`. Use a placeholder value (e.g., `https://`) for now, as this will be updated with the backend URL later.  
+1. **Deploying the Frontend**
+   - Click the **Frontend** button above to start the deployment process.
+   - During deployment, you will be prompted to set the `API_BASE_URL`. Use a placeholder value (e.g., `https://`) for now, as this will be updated with the backend URL later.
    - Complete the deployment process [here](#post-deployment-configuration).
 
 ### Backend Deployment
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvintasoftware%2Fnextjs-fastapi-template%2Ftree%2Fmain%2Ffastapi_backend&env=CORS_ORIGINS,ACCESS_SECRET_KEY,RESET_PASSWORD_SECRET_KEY,VERIFICATION_SECRET_KEY&stores=%5B%7B%22type%22%3A%22postgres%22%7D%5D)
 
-1. **Deploying the Backend**  
+1. **Deploying the Backend**
    - Click the **Backend** button above to begin deployment.
    - First, set up the database. The connection is automatically configured, so follow the steps, and it should work by default.
    - During the deployment process, you will be prompted to configure the following environment variables:
 
-     - **CORS_ORIGINS**  
+     - **CORS_ORIGINS**
        - Set this to `["*"]` initially to allow all origins. Later, you can update this with the frontend URL.
 
-     - **ACCESS_SECRET_KEY**, **RESET_PASSWORD_SECRET_KEY**, **VERIFICATION_SECRET_KEY**  
+     - **ACCESS_SECRET_KEY**, **RESET_PASSWORD_SECRET_KEY**, **VERIFICATION_SECRET_KEY**
        - During deployment, you can temporarily set these secret keys as plain strings (e.g., `examplekey`). However, you should generate secure keys and update them after the deployment in the **Post-Deployment Configuration** section.
 
    - Complete the deployment process [here](#post-deployment-configuration).
@@ -373,11 +373,11 @@ You can do it with the following commands:
    ```
 
 ### Prerequisites
-1. **Create a Vercel Token**:  
-   - Generate your [Vercel Access Token](https://vercel.com/account/tokens).  
+1. **Create a Vercel Token**:
+   - Generate your [Vercel Access Token](https://vercel.com/account/tokens).
    - Save the token as `VERCEL_TOKEN` in your GitHub secrets.
 
-2. **Install Vercel CLI**:  
+2. **Install Vercel CLI**:
    ```bash
    pnpm i -g vercel@latest
    ```
@@ -391,12 +391,12 @@ You can do it with the following commands:
       - You can use your database hosted on a different service or opt for the [Neon](https://neon.tech/docs/introduction) database, which integrates seamlessly with Vercel.
 
    2. **Setting Up a Neon Database via Vercel**
-      - In the **Projects dashboard** page on Vercel, navigate to the **Storage** section.  
+      - In the **Projects dashboard** page on Vercel, navigate to the **Storage** section.
       - Select the option to **Create a Database** to provision a Neon database.
 
    3. **Configuring the Database URL**
-      - After creating the database, retrieve the **Database URL** provided by Neon.  
-      - Include this URL in your **Environment Variables** under `DATABASE_URL`.  
+      - After creating the database, retrieve the **Database URL** provided by Neon.
+      - Include this URL in your **Environment Variables** under `DATABASE_URL`.
 
    4. **Migrating the Database**
       - The database migration will happen automatically during the GitHub action deployment, setting up the necessary tables and schema.
@@ -447,31 +447,31 @@ You can do it with the following commands:
 ## **Post-Deployment Configuration**
 
 ### Frontend
-   - Navigate to the **Settings** page of the deployed frontend project.  
-   - Access the **Environment Variables** section.  
+   - Navigate to the **Settings** page of the deployed frontend project.
+   - Access the **Environment Variables** section.
    - Update the `API_BASE_URL` variable with the backend URL once the backend deployment is complete.
 
 ### Backend
-   - Access the **Settings** page of the deployed backend project.  
+   - Access the **Settings** page of the deployed backend project.
    - Navigate to the **Environment Variables** section and update the following variables with secure values:
 
-     - **CORS_ORIGINS**  
+     - **CORS_ORIGINS**
        - Once the frontend is deployed, replace `["*"]` with the actual frontend URL.
 
-     - **ACCESS_SECRET_KEY**  
-       - Generate a secure key for API access and set it here.  
+     - **ACCESS_SECRET_KEY**
+       - Generate a secure key for API access and set it here.
 
      - **RESET_PASSWORD_SECRET_KEY**
        - Generate a secure key for password reset functionality and set it.
 
-     - **VERIFICATION_SECRET_KEY**  
+     - **VERIFICATION_SECRET_KEY**
        - Generate a secure key for user verification and configure it.
 
    - For detailed instructions on setting these secret keys, please look at the section on [Setting up Environment Variables](#setting-up-environment-variables).
 
 ### Fluid Serverless Activation
-[Fluid](https://vercel.com/docs/functions/fluid-compute) is Vercel's new concurrency model for serverless functions, allowing them to handle multiple 
-requests per execution instead of spinning up a new instance for each request. This improves performance, 
+[Fluid](https://vercel.com/docs/functions/fluid-compute) is Vercel's new concurrency model for serverless functions, allowing them to handle multiple
+requests per execution instead of spinning up a new instance for each request. This improves performance,
 reduces cold starts, and optimizes resource usage, making serverless workloads more efficient.
 
 Follow this [guide](https://vercel.com/docs/functions/fluid-compute#how-to-enable-fluid-compute) to activate Fluid.

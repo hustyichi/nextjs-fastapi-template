@@ -11,6 +11,9 @@ dependencies = [
     "fastapi-users[sqlalchemy]>=13.0.0,<14",
     "pydantic-settings>=2.5.2,<3",
     "fastapi-mail>=1.4.1,<2",
+    "taskiq>=0.11.17",
+    "taskiq-redis>=1.0.8",
+    "taskiq-fastapi>=0.3.5",
 ]
 
 [dependency-groups]

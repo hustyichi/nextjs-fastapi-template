@@ -153,7 +153,7 @@ Copy the `.env.example` files to `.env.local`. These values are unlikely to chan
    cd nextjs-frontend && cp .env.example .env.local
    ```
 
-### Running the Database
+### Running the Database and Redis
 1. Use Docker to run the database to avoid local installation issues. Build and start the database container:
    ```bash
    docker compose build db
@@ -162,6 +162,11 @@ Copy the `.env.example` files to `.env.local`. These values are unlikely to chan
 2. Run the following command to apply database migrations:
    ```bash
    make docker-migrate-db
+   ```
+3.  Use Docker to run the redis to avoid local installation issues. Build and start the redis container:
+   ```bash
+   docker compose build redis
+   docker compose up -d redis
    ```
 
 ### Build the Project (without Docker):

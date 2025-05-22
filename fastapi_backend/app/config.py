@@ -38,6 +38,9 @@ class Settings(BaseSettings):
     # CORS
     CORS_ORIGINS: Set[str]
 
+    # TaskIQ/Redis
+    REDIS_URL: str = "redis://localhost:6379"
+
     model_config = SettingsConfigDict(
         env_file=".env", env_file_encoding="utf-8", extra="ignore"
     )

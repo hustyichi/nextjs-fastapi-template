@@ -11,9 +11,9 @@ class UserRead(schemas.BaseUser[uuid.UUID]):
 
 
 class UserCreate(schemas.BaseUserCreate):
-    name: Optional[str]
-    phone: Optional[str]
-    avatar: Optional[str]
+    name: Optional[str] = ""
+    phone: Optional[str] = ""
+    avatar: Optional[str] = ""
 
 
 class UserUpdate(schemas.BaseUserUpdate):

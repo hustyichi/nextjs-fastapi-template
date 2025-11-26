@@ -1049,7 +1049,8 @@
                 "type": "null"
               }
             ],
-            "title": "Name"
+            "title": "Name",
+            "default": ""
           },
           "phone": {
             "anyOf": [
@@ -1060,7 +1061,8 @@
                 "type": "null"
               }
             ],
-            "title": "Phone"
+            "title": "Phone",
+            "default": ""
           },
           "avatar": {
             "anyOf": [
@@ -1071,16 +1073,14 @@
                 "type": "null"
               }
             ],
-            "title": "Avatar"
+            "title": "Avatar",
+            "default": ""
           }
         },
         "type": "object",
         "required": [
           "email",
-          "password",
-          "name",
-          "phone",
-          "avatar"
+          "password"
         ],
         "title": "UserCreate"
       },

@@ -61,9 +61,9 @@ export type UserCreate = {
     is_active?: (boolean | null);
     is_superuser?: (boolean | null);
     is_verified?: (boolean | null);
-    name: (string | null);
-    phone: (string | null);
-    avatar: (string | null);
+    name?: (string | null);
+    phone?: (string | null);
+    avatar?: (string | null);
 };
 
 export type UserRead = {

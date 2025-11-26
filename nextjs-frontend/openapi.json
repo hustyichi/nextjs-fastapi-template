@@ -1039,12 +1039,48 @@
             ],
             "title": "Is Verified",
             "default": false
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "phone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phone"
+          },
+          "avatar": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Avatar"
           }
         },
         "type": "object",
         "required": [
           "email",
-          "password"
+          "password",
+          "name",
+          "phone",
+          "avatar"
         ],
         "title": "UserCreate"
       },

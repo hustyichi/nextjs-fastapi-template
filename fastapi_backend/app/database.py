@@ -9,7 +9,6 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 from .config import settings
 from .models import Base, User
 
-
 parsed_db_url = urlparse(settings.DATABASE_URL)
 
 async_db_connection_url = (

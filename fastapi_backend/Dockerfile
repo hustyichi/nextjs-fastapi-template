@@ -18,8 +18,8 @@ ENV PATH="/root/.local/bin/:$PATH"
 # Copy dependency files first to leverage Docker caching
 COPY pyproject.toml uv.lock ./
 
-# Install dependencies using uv
-RUN uv sync --frozen
+# Install dependencies using uv (including dev dependencies for watchdog)
+RUN uv sync --frozen --all-groups
 
 ENV PATH="/app/.venv/bin:$PATH"
 

@@ -1,6 +1,5 @@
 import uuid
 from typing import Optional
-from uuid import UUID
 
 from fastapi_users import schemas
 from pydantic import BaseModel
@@ -31,7 +30,7 @@ class ItemCreate(ItemBase):
 
 
 class ItemRead(ItemBase):
-    id: UUID
-    user_id: UUID
+    id: uuid.UUID
+    user_id: uuid.UUID
 
     model_config = {"from_attributes": True}

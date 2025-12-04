@@ -140,6 +140,28 @@ export type VerifyVerifyResponse = (UserRead);
 
 export type VerifyVerifyError = (ErrorModel | HTTPValidationError);
 
+export type ReadItemResponse = (Array<ItemRead>);
+
+export type ReadItemError = unknown;
+
+export type CreateItemData = {
+    body: ItemCreate;
+};
+
+export type CreateItemResponse = (ItemRead);
+
+export type CreateItemError = (HTTPValidationError);
+
+export type DeleteItemData = {
+    path: {
+        item_id: string;
+    };
+};
+
+export type DeleteItemResponse = (unknown);
+
+export type DeleteItemError = (HTTPValidationError);
+
 export type UsersCurrentUserResponse = (UserRead);
 
 export type UsersCurrentUserError = (unknown);
@@ -182,25 +204,3 @@ export type UsersDeleteUserData = {
 export type UsersDeleteUserResponse = (void);
 
 export type UsersDeleteUserError = (unknown | HTTPValidationError);
-
-export type ReadItemResponse = (Array<ItemRead>);
-
-export type ReadItemError = unknown;
-
-export type CreateItemData = {
-    body: ItemCreate;
-};
-
-export type CreateItemResponse = (ItemRead);
-
-export type CreateItemError = (HTTPValidationError);
-
-export type DeleteItemData = {
-    path: {
-        item_id: string;
-    };
-};
-
-export type DeleteItemResponse = (unknown);
-
-export type DeleteItemError = (HTTPValidationError);

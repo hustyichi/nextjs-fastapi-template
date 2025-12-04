@@ -1,13 +1,11 @@
 from typing import AsyncGenerator
 from urllib.parse import urlparse
 
-from fastapi import Depends
-from fastapi_users.db import SQLAlchemyUserDatabase
+from app.config import settings
+from app.db.models import Base
 from sqlalchemy import NullPool
-from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
-
-from .config import settings
-from .models import Base, User
+from sqlalchemy.ext.asyncio import (AsyncSession, async_sessionmaker,
+                                    create_async_engine)
 
 parsed_db_url = urlparse(settings.DATABASE_URL)
 
@@ -32,8 +30,9 @@ async def create_db_and_tables():
 
 async def get_async_session() -> AsyncGenerator[AsyncSession, None]:
     async with async_session_maker() as session:
-        yield session
-
-
-async def get_user_db(session: AsyncSession = Depends(get_async_session)):
-    yield SQLAlchemyUserDatabase(session, User)
+        try:
+            yield session
+            await session.commit()
+        except Exception as e:
+            await session.rollback()
+            raise e

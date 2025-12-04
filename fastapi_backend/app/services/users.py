@@ -2,25 +2,17 @@ import re
 import uuid
 from typing import Optional
 
+from app.config import settings
+from app.db.dao.user import get_user_db
+from app.db.models.user import User
+from app.routes.schemas import UserCreate
+from app.services.email import send_reset_password_email
 from fastapi import Depends, Request
-from fastapi_users import (
-    BaseUserManager,
-    FastAPIUsers,
-    InvalidPasswordException,
-    UUIDIDMixin,
-)
-from fastapi_users.authentication import (
-    AuthenticationBackend,
-    BearerTransport,
-    JWTStrategy,
-)
-from fastapi_users.db import SQLAlchemyUserDatabase
-
-from .config import settings
-from .database import get_user_db
-from .email import send_reset_password_email
-from .models import User
-from .schemas import UserCreate
+from fastapi_users import (BaseUserManager, FastAPIUsers,
+                           InvalidPasswordException, UUIDIDMixin)
+from fastapi_users.authentication import (AuthenticationBackend,
+                                          BearerTransport, JWTStrategy)
+from fastapi_users_db_sqlalchemy import SQLAlchemyUserDatabase
 
 AUTH_URL_PATH = "auth"
 
@@ -82,6 +74,15 @@ auth_backend = AuthenticationBackend(
     get_strategy=get_jwt_strategy,
 )
 
-fastapi_users = FastAPIUsers[User, uuid.UUID](get_user_manager, [auth_backend])
+fastapi_user_manager = FastAPIUsers[User, uuid.UUID](get_user_manager, [auth_backend])
 
-current_active_user = fastapi_users.current_user(active=True)
+current_active_user = fastapi_user_manager.current_user(active=True)
+auth_backend = AuthenticationBackend(
+    name="jwt",
+    transport=bearer_transport,
+    get_strategy=get_jwt_strategy,
+)
+
+fastapi_user_manager = FastAPIUsers[User, uuid.UUID](get_user_manager, [auth_backend])
+
+current_active_user = fastapi_user_manager.current_user(active=True)

@@ -1,10 +1,9 @@
 import urllib.parse
 from pathlib import Path
 
+from app.config import settings
+from app.db.models.user import User
 from fastapi_mail import ConnectionConfig, FastMail, MessageSchema, MessageType
-
-from .config import settings
-from .models import User
 
 
 def get_email_config():
@@ -39,4 +38,4 @@ async def send_reset_password_email(user: User, token: str):
     )
 
     fm = FastMail(conf)
-    await fm.send_message(message, template_name="password_reset.html")
+    await fm.send_message(message, template_name="app.templates.email_password_reset.html")

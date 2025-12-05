@@ -41,6 +41,10 @@ class Settings(BaseSettings):
     # TaskIQ/Redis
     REDIS_URL: str = "redis://localhost:6379"
 
+    # Superuser switching from environment variables
+    # If set, the user with this email will be promoted to superuser on startup (if not already)
+    SUPERUSER_EMAIL: str = ""
+
     model_config = SettingsConfigDict(
         env_file=".env", env_file_encoding="utf-8", extra="ignore"
     )

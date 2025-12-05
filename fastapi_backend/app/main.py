@@ -1,16 +1,29 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.routes.items import router as items_router
+from app.startup import init_superuser_from_env
 
 from .schemas import UserCreate, UserRead, UserUpdate
 from .users import AUTH_URL_PATH, auth_backend, fastapi_users
 from .utils import simple_generate_unique_route_id
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    await init_superuser_from_env()
+    yield
+    # Shutdown (if needed in the future)
+
+
 app = FastAPI(
     generate_unique_id_function=simple_generate_unique_route_id,
     openapi_url=settings.OPENAPI_URL,
+    lifespan=lifespan,
 )
 
 # Middleware for CORS configuration
